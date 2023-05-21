@@ -14,12 +14,6 @@
   "attributes": {
     "dsssd": {
       "type": "string"
-    },
-    "post": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::post.post",
-      "inversedBy": "images"
     }
   }
 }

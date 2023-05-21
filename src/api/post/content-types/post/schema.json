@@ -15,31 +15,16 @@
     "title": {
       "type": "string"
     },
-    "uuid": {
-      "type": "uid",
-      "targetField": "title"
-    },
     "desc": {
       "type": "text"
     },
-    "admin_user": {
+    "user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "admin::user"
+      "target": "plugin::users-permissions.user"
     },
-    "tags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
-    },
-    "user_active": {
+    "is_reply": {
       "type": "boolean"
-    },
-    "images": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::image.image",
-      "mappedBy": "post"
     }
   }
 }
