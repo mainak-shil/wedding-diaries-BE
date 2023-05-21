@@ -2,7 +2,7 @@
   "name": "wedding-diaries-backend",
   "private": true,
   "version": "0.1.0",
-  "description": "",
+  "description": "test",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
