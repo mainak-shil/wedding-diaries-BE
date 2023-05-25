@@ -65,7 +65,7 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "userType": {
+    "user_type": {
       "type": "enumeration",
       "enum": [
         "bride",
@@ -73,22 +73,23 @@
         "supplier"
       ]
     },
-    "partnerId": {
+    "partner_id": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "users_permissions_users": {
+    "posts": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "users"
+      "target": "api::post.post",
+      "mappedBy": "post_view_users"
     },
-    "users": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "users_permissions_users"
+    "user_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

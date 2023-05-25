@@ -4,7 +4,7 @@
   "info": {
     "singularName": "post",
     "pluralName": "posts",
-    "displayName": "posts",
+    "displayName": "Post",
     "description": ""
   },
   "options": {
@@ -18,13 +18,26 @@
     "desc": {
       "type": "text"
     },
-    "user": {
+    "is_reply": {
+      "type": "boolean"
+    },
+    "user_created": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "is_reply": {
-      "type": "boolean"
+    "post_view_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "posts"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
