@@ -90,6 +90,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "checklists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::checklist.checklist",
+      "mappedBy": "users"
     }
   }
 }

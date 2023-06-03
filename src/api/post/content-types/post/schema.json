@@ -21,7 +21,7 @@
     "is_reply": {
       "type": "boolean"
     },
-    "user_created": {
+    "user_id": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
@@ -33,11 +33,12 @@
       "inversedBy": "posts"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }
