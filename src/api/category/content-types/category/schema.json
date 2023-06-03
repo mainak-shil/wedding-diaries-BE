@@ -19,10 +19,24 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "is_active": {
       "type": "boolean"
+    },
+    "suppliers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::supplier.supplier",
+      "mappedBy": "category"
+    },
+    "attributes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::attribute.attribute",
+      "mappedBy": "category"
     }
   }
 }

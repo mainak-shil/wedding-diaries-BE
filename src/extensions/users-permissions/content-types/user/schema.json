@@ -73,11 +73,6 @@
         "supplier"
       ]
     },
-    "partner_id": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
-    },
     "posts": {
       "type": "relation",
       "relation": "manyToMany",
@@ -85,16 +80,29 @@
       "mappedBy": "post_view_users"
     },
     "user_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "checklists": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::checklist.checklist",
+      "mappedBy": "users"
+    },
+    "partner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::partner.partner",
+      "mappedBy": "users"
+    },
+    "supplier": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::supplier.supplier",
       "mappedBy": "users"
     }
   }

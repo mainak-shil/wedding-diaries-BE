@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "attributes",
+  "info": {
+    "singularName": "attribute",
+    "pluralName": "attributes",
+    "displayName": "Attribute",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "[minValue,maxValue]",
+        "Text",
+        "Number",
+        "[Place,Lat,Long]"
+      ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "attributes"
+    },
+    "supplier_attributes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::supplier-attribute.supplier-attribute",
+      "mappedBy": "attribute"
+    }
+  }
+}

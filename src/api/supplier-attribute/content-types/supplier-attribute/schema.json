@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "supplier_attributes",
+  "info": {
+    "singularName": "supplier-attribute",
+    "pluralName": "supplier-attributes",
+    "displayName": "SupplierAttribute"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "attribute_value": {
+      "type": "string"
+    },
+    "attribute": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::attribute.attribute",
+      "inversedBy": "supplier_attributes"
+    },
+    "supplier": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::supplier.supplier",
+      "inversedBy": "supplier_attributes"
+    }
+  }
+}
