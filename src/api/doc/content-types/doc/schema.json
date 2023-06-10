@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "docs",
+  "info": {
+    "singularName": "doc",
+    "pluralName": "docs",
+    "displayName": "Doc"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "file": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    },
+    "doc_folder": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::doc-folder.doc-folder",
+      "inversedBy": "docs"
+    }
+  }
+}

@@ -28,7 +28,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::partner.partner",
-      "inversedBy": "partner_id"
+      "mappedBy": "partner_id"
     },
     "partner_id": {
       "type": "relation",

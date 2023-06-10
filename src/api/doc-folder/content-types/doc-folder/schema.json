@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "doc_folders",
+  "info": {
+    "singularName": "doc-folder",
+    "pluralName": "doc-folders",
+    "displayName": "DocFolder",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "doc_folders"
+    },
+    "docs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::doc.doc",
+      "mappedBy": "doc_folder"
+    }
+  }
+}

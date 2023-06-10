@@ -104,6 +104,15 @@
       "relation": "oneToOne",
       "target": "api::supplier.supplier",
       "mappedBy": "users"
+    },
+    "doc_folders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::doc-folder.doc-folder",
+      "mappedBy": "users"
+    },
+    "location": {
+      "type": "json"
     }
   }
 }

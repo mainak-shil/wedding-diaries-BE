@@ -1,30 +1,3 @@
-#### swagger link
-http://localhost:1337/documentation/v1.0.0#
-
-https://docs.strapi.io/dev-docs/plugins/documentation
-
-
-### enable Public endpoints to access like login, signups
-
-
-REST API parameters
-https://docs.strapi.io/dev-docs/api/rest/parameters
-
-op
-https://docs.strapi.io/dev-docs/api/query-engine/single-operations
-
-connect/set/disconnect - update relations
-https://docs.strapi.io/dev-docs/api/rest/relations
-
-
-https://www.npmjs.com/package/google-cal-meet-api?activeTab=readme
-
-
-
-
-
-
-
 # 🚀 Getting started with Strapi
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
