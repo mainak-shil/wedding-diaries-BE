@@ -99,12 +99,6 @@
       "target": "api::partner.partner",
       "mappedBy": "users"
     },
-    "supplier": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::supplier.supplier",
-      "mappedBy": "users"
-    },
     "doc_folders": {
       "type": "relation",
       "relation": "manyToMany",
@@ -113,6 +107,12 @@
     },
     "location": {
       "type": "json"
+    },
+    "supplier": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::supplier.supplier",
+      "mappedBy": "user"
     }
   }
 }
