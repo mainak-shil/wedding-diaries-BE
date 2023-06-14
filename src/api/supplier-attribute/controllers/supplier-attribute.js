@@ -3,10 +3,7 @@
  * supplier-attribute controller
  */
 
-const {
-  ATTRIBUTE_FILTER_TYPES,
-  RESPONSE_SELECTION,
-} = require('../../../utils/config');
+const { ATTRIBUTE_FILTER_TYPES, POPULATE } = require('../../../utils/config');
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
@@ -26,7 +23,7 @@ module.exports = createCoreController(
         populate: {
           category: true,
           supplier_attributes: true,
-          user: RESPONSE_SELECTION.user, //! ***
+          user: POPULATE.user, //! ***
         },
       });
 
