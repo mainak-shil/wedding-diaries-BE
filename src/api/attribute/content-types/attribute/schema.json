@@ -21,7 +21,7 @@
         "[minValue,maxValue]",
         "Text",
         "Number",
-        "[Place,Lat,Long]"
+        "[Lat,Lng]"
       ]
     },
     "category": {

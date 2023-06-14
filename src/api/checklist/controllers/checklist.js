@@ -1,51 +1,49 @@
-"use strict";
+'use strict';
 
 /**
  * checklist controller
+ * custom controller
  */
-
-const { createCoreController } = require("@strapi/strapi").factories;
-const _ = require("lodash");
+const { createCoreController } = require('@strapi/strapi').factories;
+const _ = require('lodash');
 
 module.exports = createCoreController(
-  "api::checklist.checklist",
+  'api::checklist.checklist',
   ({ strapi }) => ({
     async getCustomChecklist(ctx) {
-      let entities;
-
+      // Fetch checklist entries with select fields and populate users
       const entries = await strapi.db
-        .query("api::checklist.checklist")
+        .query('api::checklist.checklist')
         .findMany({
-          select: ["title", "description", "months_before"],
-          // where: { title: 'Hello World' },
-          // orderBy: { publishedAt: 'DESC' },
+          select: ['title', 'description', 'months_before'],
           populate: { users: true },
         });
+
       const currentDate = new Date();
-      entities = entries.map((entity) => {
+
+      // Process each checklist entry
+      const entities = entries.map(entity => {
         const monthsBefore = entity.months_before;
         const newDate = new Date(currentDate);
         newDate.setMonth(newDate.getMonth() - monthsBefore);
+
+        // Check if the current user is present in the users list of the entry
         const isCurrentUserPresent = entity.users?.find(
-          (user) => user.id === ctx.state.user.id
+          user => user.id === ctx.state.user.id
         );
 
-        // return {
-        //   ...entity,
-        //   is_checked: !!isCurrentUserPresent,
-        //   calculatedDate: newDate,
-        // };
+        // Omit the 'users' field from the returned entity
         return _.omit(
           {
             ...entity,
             is_checked: !!isCurrentUserPresent,
             calculatedDate: newDate,
           },
-          ["users"]
+          ['users']
         );
       });
-      ctx.send(entities);
-      // ctx.body = entities;
+
+      ctx.send(entities); // Send the processed entities as the response
     },
   })
 );

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-06-13T17:43:31.523Z"
+    "x-generation-date": "2023-06-14T22:35:47.870Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -104,7 +104,7 @@
                   "[minValue,maxValue]",
                   "Text",
                   "Number",
-                  "[Place,Lat,Long]"
+                  "[Lat,Lng]"
                 ]
               },
               "category": {
@@ -194,7 +194,7 @@
               "[minValue,maxValue]",
               "Text",
               "Number",
-              "[Place,Lat,Long]"
+              "[Lat,Lng]"
             ]
           },
           "category": {
@@ -905,7 +905,7 @@
                                                                   "[minValue,maxValue]",
                                                                   "Text",
                                                                   "Number",
-                                                                  "[Place,Lat,Long]"
+                                                                  "[Lat,Lng]"
                                                                 ]
                                                               },
                                                               "category": {
@@ -3434,7 +3434,7 @@
                                                       "[minValue,maxValue]",
                                                       "Text",
                                                       "Number",
-                                                      "[Place,Lat,Long]"
+                                                      "[Lat,Lng]"
                                                     ]
                                                   },
                                                   "category": {
@@ -6959,7 +6959,7 @@
                                                                   "[minValue,maxValue]",
                                                                   "Text",
                                                                   "Number",
-                                                                  "[Place,Lat,Long]"
+                                                                  "[Lat,Lng]"
                                                                 ]
                                                               },
                                                               "category": {
@@ -9185,7 +9185,7 @@
                                                                               "[minValue,maxValue]",
                                                                               "Text",
                                                                               "Number",
-                                                                              "[Place,Lat,Long]"
+                                                                              "[Lat,Lng]"
                                                                             ]
                                                                           },
                                                                           "category": {
@@ -11831,7 +11831,7 @@
                                                                   "[minValue,maxValue]",
                                                                   "Text",
                                                                   "Number",
-                                                                  "[Place,Lat,Long]"
+                                                                  "[Lat,Lng]"
                                                                 ]
                                                               },
                                                               "category": {
@@ -14228,7 +14228,7 @@
                                                                 "[minValue,maxValue]",
                                                                 "Text",
                                                                 "Number",
-                                                                "[Place,Lat,Long]"
+                                                                "[Lat,Lng]"
                                                               ]
                                                             },
                                                             "category": {
@@ -16647,7 +16647,7 @@
                                                                 "[minValue,maxValue]",
                                                                 "Text",
                                                                 "Number",
-                                                                "[Place,Lat,Long]"
+                                                                "[Lat,Lng]"
                                                               ]
                                                             },
                                                             "category": {
@@ -18048,7 +18048,7 @@
                                                                   "[minValue,maxValue]",
                                                                   "Text",
                                                                   "Number",
-                                                                  "[Place,Lat,Long]"
+                                                                  "[Lat,Lng]"
                                                                 ]
                                                               },
                                                               "category": {
@@ -19757,7 +19757,7 @@
                           "[minValue,maxValue]",
                           "Text",
                           "Number",
-                          "[Place,Lat,Long]"
+                          "[Lat,Lng]"
                         ]
                       },
                       "category": {

@@ -1,9 +1,11 @@
 'use strict';
 /**
  * supplier-attribute controller
+ * custom controller
  */
 
-const { ATTRIBUTE_FILTER_TYPES, POPULATE } = require('../../../utils/config');
+const { POPULATE } = require('../../../utils/config');
+const { matchAttributesBasedOnTypes } = require('../../../utils/helper');
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
@@ -13,48 +15,53 @@ module.exports = createCoreController(
     async postFilterSupplierAttributes(ctx) {
       const { category_id, attributes } = ctx.request.body;
 
-      // 1. find suppliers with category_id: category_id
-      const entries = await strapi.db.query('api::supplier.supplier').findMany({
-        where: {
-          category: {
-            id: category_id,
+      // Fetch attributes based on category ID
+      const filterBasedOnCategory = await strapi.db
+        .query('api::attribute.attribute')
+        .findMany({
+          where: {
+            category: {
+              id: category_id,
+            },
           },
-        },
-        populate: {
-          category: true,
-          supplier_attributes: true,
-          user: POPULATE.user, //! ***
-        },
-      });
-
-      const filteredArray = entries.filter(obj => {
-        return attributes.every(filter => {
-          if (!obj.supplier_attributes.some(attr => attr.id === filter.id)) {
-            return false; // Attribute with the specified ID not found
-          }
-
-          const attribute = obj.supplier_attributes.find(
-            attr => attr.id === filter.id
-          );
-
-          if (filter.type === ATTRIBUTE_FILTER_TYPES.MIN_MAX_RANGE) {
-            const [minValue, maxValue] = JSON.parse(filter.value); //! user value
-            const [attributeMinValue, attributeMaxValue] = JSON.parse(
-              attribute.attribute_value
-            );
-            return (
-              minValue >= attributeMinValue && maxValue <= attributeMaxValue
-            );
-          } else if (filter.type === ATTRIBUTE_FILTER_TYPES.TEXT) {
-            const attributeValue = attribute.attribute_value;
-            return attributeValue.toLowerCase() === filter.value.toLowerCase();
-          }
-
-          return true; // No filter type specified, consider it as a match
+          populate: {
+            category: true,
+            supplier_attributes: true,
+            user: POPULATE.user,
+          },
         });
-      });
 
-      ctx.body = filteredArray;
+      // Filter and map supplier attribute IDs based on matching conditions
+      const supplier_attributes_ids = filterBasedOnCategory
+        .filter(obj1 =>
+          attributes.some(user_attributes => obj1.id === user_attributes.id)
+        )
+        .filter(obj1 => {
+          const supplierAttribute = obj1.supplier_attributes[0];
+          const userAttribute = attributes.find(attr => attr.id === obj1.id);
+          return matchAttributesBasedOnTypes(
+            obj1.type,
+            userAttribute.value,
+            supplierAttribute?.attribute_value
+          );
+        })
+        .map(obj1 => obj1.supplier_attributes[0]?.id);
+
+      // Fetch suppliers based on filtered supplier attribute IDs
+      const findSuppliers = await strapi.db
+        .query('api::supplier.supplier')
+        .findMany({
+          where: {
+            supplier_attributes: {
+              id: supplier_attributes_ids,
+            },
+          },
+          populate: {
+            user: POPULATE.user,
+          },
+        });
+
+      ctx.body = findSuppliers;
     },
   })
 );
