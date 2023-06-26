@@ -1,4 +1,4 @@
-const { ATTRIBUTE_FILTER_TYPES } = require('./config');
+const { ATTRIBUTE_FILTER_TYPES, KM_RANGE_SEARCH } = require('./config');
 
 function calcDistanceInKM(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the Earth in kilometers
@@ -41,7 +41,7 @@ function matchAttributesBasedOnTypes(type, user_value, supplier_value) {
       const [lat, lng] = JSON.parse(supplier_value); // Parse supplier latitude and longitude
       const distanceInKM = calcDistanceInKM(userLat, userLng, lat, lng); // Calculate distance in kilometers
       console.log('km', distanceInKM);
-      return distanceInKM <= 1; // Check if distance is within the desired threshold (1 km in this case)
+      return distanceInKM <= KM_RANGE_SEARCH; // Check if distance is within the desired threshold (1 km in this case)
     default:
       return false; // Default case if type doesn't match any defined cases
   }
