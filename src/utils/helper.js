@@ -1,4 +1,6 @@
 const { ATTRIBUTE_FILTER_TYPES, KM_RANGE_SEARCH } = require('./config');
+const csv = require('csv-parser');
+const fs = require('fs');
 
 function calcDistanceInKM(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the Earth in kilometers
@@ -46,5 +48,40 @@ function matchAttributesBasedOnTypes(type, user_value, supplier_value) {
       return false; // Default case if type doesn't match any defined cases
   }
 }
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
 
-module.exports = { calcDistanceInKM, matchAttributesBasedOnTypes };
+function sendAck(ctx, message, statusCode, data) {
+  ctx.send({ message, data }, statusCode);
+}
+
+function csvParserAddUser(filePath, userId) {
+  const jsonData = [];
+  const purgeData = [];
+  return new Promise(resolve => {
+    fs.createReadStream(filePath)
+      .pipe(csv(['name', 'email', 'phone']))
+      .on('data', data => {
+        if (isValidEmail(data.email) && data.phone.length && data.name.length) {
+          jsonData.push({ ...data, user: { id: userId } });
+        } else {
+          purgeData.push(data);
+        }
+      })
+      .on('end', () => {
+        // CSV parsing is complete
+        console.log('CSV file read successfully.');
+        resolve({ jsonData, purgeData });
+      });
+  });
+}
+
+module.exports = {
+  calcDistanceInKM,
+  matchAttributesBasedOnTypes,
+  isValidEmail,
+  sendAck,
+  csvParserAddUser,
+};

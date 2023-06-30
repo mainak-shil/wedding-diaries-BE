@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "guest_lists",
+  "info": {
+    "singularName": "guest-list",
+    "pluralName": "guest-lists",
+    "displayName": "GuestList",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
