@@ -37,14 +37,14 @@ module.exports = createCoreController(
       }
 
       if (purgeData.length) {
-        sendAck(
+        sendAck({
           ctx,
-          `Sorry! Due to validation errors we could not add these items, but rest of the items were added.`,
-          422,
-          purgeData
-        );
+          message: `Sorry! Due to validation errors we could not add these items, but rest of the items were added.`,
+          statusCode: 422,
+          data: purgeData,
+        });
       } else {
-        sendAck(ctx, 'Entries created successfully!');
+        sendAck({ ctx, message: 'Entries created successfully!' });
       }
     },
   })

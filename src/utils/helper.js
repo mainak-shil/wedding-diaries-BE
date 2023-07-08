@@ -54,7 +54,7 @@ function isValidEmail(email) {
   return emailRegex.test(email);
 }
 
-function sendAck(ctx, message, statusCode, data) {
+function sendAck({ ctx, message, statusCode = 200, data }) {
   ctx.send({ message, data }, statusCode);
 }
 
