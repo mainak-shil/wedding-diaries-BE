@@ -1,6 +1,7 @@
 const { ATTRIBUTE_FILTER_TYPES, KM_RANGE_SEARCH } = require('./config');
 const csv = require('csv-parser');
 const fs = require('fs');
+const sgMail = require('@sendgrid/mail');
 
 function calcDistanceInKM(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the Earth in kilometers
@@ -78,10 +79,29 @@ function csvParserAddUser(filePath, userId) {
   });
 }
 
+async function sendMailUsingSendGrid(msg) {
+  // const msg = {
+  //   to: 'dev.mainakshil@gmail.com', // Change to your recipient
+  //   from: 'suraj@alsoltech.com', // Change to your verified sender
+  //   subject: 'Sending with SendGrid is Fun',
+  //   text: 'and easy to do anywhere, even with Node.js',
+  //   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+  // };
+  await sgMail
+    .send(msg)
+    .then(() => {
+      console.log('Email sent');
+    })
+    .catch(error => {
+      console.error(JSON.stringify(error));
+    });
+}
+
 module.exports = {
   calcDistanceInKM,
   matchAttributesBasedOnTypes,
   isValidEmail,
   sendAck,
   csvParserAddUser,
+  sendMailUsingSendGrid,
 };

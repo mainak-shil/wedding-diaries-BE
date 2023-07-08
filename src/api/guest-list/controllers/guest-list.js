@@ -14,6 +14,7 @@ module.exports = createCoreController(
       const {
         request: { files: { files } = {} },
       } = ctx;
+
       const { jsonData, purgeData } =
         (await csvParserAddUser(files.path, ctx.state.user.id)) ?? [];
 

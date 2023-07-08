@@ -35,6 +35,12 @@
       "relation": "oneToMany",
       "target": "api::supplier-attribute.supplier-attribute",
       "mappedBy": "attribute"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "partner"
     }
   }
 }

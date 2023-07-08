@@ -11,10 +11,12 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-documentation": "4.11.0",
-    "@strapi/plugin-i18n": "4.11.0",
-    "@strapi/plugin-users-permissions": "4.11.0",
-    "@strapi/strapi": "4.11.0",
+    "@sendgrid/mail": "^7.7.0",
+    "@strapi/plugin-documentation": "4.11.4",
+    "@strapi/plugin-i18n": "4.11.4",
+    "@strapi/plugin-users-permissions": "4.11.4",
+    "@strapi/provider-email-sendgrid": "^4.11.4",
+    "@strapi/strapi": "4.11.4",
     "csv-parser": "^3.0.0",
     "pg": "^8.11.0"
   },

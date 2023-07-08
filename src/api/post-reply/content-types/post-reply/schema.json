@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "post_replies",
+  "info": {
+    "singularName": "post-reply",
+    "pluralName": "post-replies",
+    "displayName": "PostReply"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "comment": {
+      "type": "string"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "post": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::post.post",
+      "inversedBy": "post_replies"
+    }
+  }
+}

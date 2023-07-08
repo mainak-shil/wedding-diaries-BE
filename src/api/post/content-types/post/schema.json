@@ -18,10 +18,7 @@
     "desc": {
       "type": "text"
     },
-    "is_reply": {
-      "type": "boolean"
-    },
-    "user_id": {
+    "user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
@@ -39,6 +36,12 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "post_replies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post-reply.post-reply",
+      "mappedBy": "post"
     }
   }
 }

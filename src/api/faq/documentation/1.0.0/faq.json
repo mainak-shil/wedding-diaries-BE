@@ -1,5 +1,5 @@
 {
-  "/partners": {
+  "/faqs": {
     "get": {
       "responses": {
         "200": {
@@ -7,7 +7,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerListResponse"
+                "$ref": "#/components/schemas/FaqListResponse"
               }
             }
           }
@@ -64,7 +64,7 @@
         }
       },
       "tags": [
-        "Partner"
+        "Faq"
       ],
       "parameters": [
         {
@@ -169,7 +169,7 @@
           }
         }
       ],
-      "operationId": "get/partners"
+      "operationId": "get/faqs"
     },
     "post": {
       "responses": {
@@ -178,7 +178,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerResponse"
+                "$ref": "#/components/schemas/FaqResponse"
               }
             }
           }
@@ -235,23 +235,23 @@
         }
       },
       "tags": [
-        "Partner"
+        "Faq"
       ],
       "parameters": [],
-      "operationId": "post/partners",
+      "operationId": "post/faqs",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/PartnerRequest"
+              "$ref": "#/components/schemas/FaqRequest"
             }
           }
         }
       }
     }
   },
-  "/partners/{id}": {
+  "/faqs/{id}": {
     "get": {
       "responses": {
         "200": {
@@ -259,7 +259,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerResponse"
+                "$ref": "#/components/schemas/FaqResponse"
               }
             }
           }
@@ -316,7 +316,7 @@
         }
       },
       "tags": [
-        "Partner"
+        "Faq"
       ],
       "parameters": [
         {
@@ -330,7 +330,7 @@
           }
         }
       ],
-      "operationId": "get/partners/{id}"
+      "operationId": "get/faqs/{id}"
     },
     "put": {
       "responses": {
@@ -339,7 +339,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PartnerResponse"
+                "$ref": "#/components/schemas/FaqResponse"
               }
             }
           }
@@ -396,7 +396,7 @@
         }
       },
       "tags": [
-        "Partner"
+        "Faq"
       ],
       "parameters": [
         {
@@ -410,13 +410,13 @@
           }
         }
       ],
-      "operationId": "put/partners/{id}",
+      "operationId": "put/faqs/{id}",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/PartnerRequest"
+              "$ref": "#/components/schemas/FaqRequest"
             }
           }
         }
@@ -487,7 +487,7 @@
         }
       },
       "tags": [
-        "Partner"
+        "Faq"
       ],
       "parameters": [
         {
@@ -501,7 +501,7 @@
           }
         }
       ],
-      "operationId": "delete/partners/{id}"
+      "operationId": "delete/faqs/{id}"
     }
   }
 }
