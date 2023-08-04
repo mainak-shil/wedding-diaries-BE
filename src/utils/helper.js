@@ -62,8 +62,9 @@ function csvParserAddUser(filePath, userId) {
   const jsonData = [];
   const purgeData = [];
   return new Promise(resolve => {
+    // .pipe(csv(['name', 'email', 'phone']))
     fs.createReadStream(filePath)
-      .pipe(csv(['name', 'email', 'phone']))
+      .pipe(csv())
       .on('data', data => {
         if (isValidEmail(data.email) && data.phone.length && data.name.length) {
           jsonData.push({ ...data, user: { id: userId } });
@@ -97,6 +98,10 @@ async function sendMailUsingSendGrid(msg) {
     });
 }
 
+function subtractMonths(date, months) {
+  return date.setMonth(date.getMonth() - months);
+}
+
 module.exports = {
   calcDistanceInKM,
   matchAttributesBasedOnTypes,
@@ -104,4 +109,5 @@ module.exports = {
   sendAck,
   csvParserAddUser,
   sendMailUsingSendGrid,
+  subtractMonths,
 };

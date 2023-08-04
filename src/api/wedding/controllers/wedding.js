@@ -1,5 +1,6 @@
 'use strict';
 /**
+ * #custom_controller
  * wedding controller
  */
 

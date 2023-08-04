@@ -13,10 +13,12 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": false
     },
     "months_before": {
       "type": "integer"
