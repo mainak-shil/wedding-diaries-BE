@@ -6,14 +6,14 @@
  */
 const { createCoreController } = require('@strapi/strapi').factories;
 const _ = require('lodash');
-const { subtractMonths } = require('../../../utils/helper');
+const { subtractMonths, sendAck } = require('../../../utils/helper');
 var { format } = require('date-fns');
 
 module.exports = createCoreController(
   'api::checklist.checklist',
   ({ strapi }) => ({
     async groupChecklistBasedOnMonthBeforeAndWeddingDate(ctx) {
-      // Fetch checklist entries with select fields and populate users
+      //! Fetch checklist entries with select fields and populate users
       const entries = await strapi.db
         .query('api::checklist.checklist')
         .findMany({
@@ -30,6 +30,15 @@ module.exports = createCoreController(
           },
           select: 'date',
         });
+
+      if (!weddingUser) {
+        return sendAck({
+          message:
+            'Your wedding date is not added in the profile, please add the wedding date',
+          ctx,
+          statusCode: 400,
+        });
+      }
 
       let checkListObj = {};
       // Process each checklist entry
@@ -61,7 +70,7 @@ module.exports = createCoreController(
         }
       });
 
-      ctx.send(checkListObj); // Send the processed entities as the response
+      sendAck({ ctx, data: checkListObj }); //! Send the processed entities as the response
     },
   })
 );

@@ -7,7 +7,10 @@ const ATTRIBUTE_FILTER_TYPES = {
 const POPULATE = {
   user: { select: ['id', 'username', 'email', 'user_image'] },
 };
+const SELECT = {
+  user: { select: ['id', 'username', 'email'] },
+};
 
 const KM_RANGE_SEARCH = 10;
 
-module.exports = { ATTRIBUTE_FILTER_TYPES, POPULATE, KM_RANGE_SEARCH };
+module.exports = { ATTRIBUTE_FILTER_TYPES, POPULATE, KM_RANGE_SEARCH, SELECT };
