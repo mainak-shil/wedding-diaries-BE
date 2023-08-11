@@ -67,11 +67,7 @@
     },
     "user_type": {
       "type": "enumeration",
-      "enum": [
-        "bride",
-        "groom",
-        "supplier"
-      ]
+      "enum": ["bride", "groom", "supplier"]
     },
     "posts": {
       "type": "relation",
@@ -83,9 +79,7 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "checklists": {
       "type": "relation",
@@ -150,6 +144,10 @@
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "mappedBy": "fav_to"
+    },
+    "initial_visit": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
