@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-08-06T13:14:16.705Z"
+    "x-generation-date": "2023-08-12T06:13:10.660Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -25,7 +25,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:1337/api",
+      "url": "http://weddingdiary.uk/api",
       "description": "Development server"
     }
   ],
@@ -2021,6 +2021,9 @@
                                                                                             }
                                                                                           }
                                                                                         },
+                                                                                        "desc": {
+                                                                                          "type": "string"
+                                                                                        },
                                                                                         "createdAt": {
                                                                                           "type": "string",
                                                                                           "format": "date-time"
@@ -2211,6 +2214,9 @@
                                                                                 }
                                                                               }
                                                                             }
+                                                                          },
+                                                                          "initial_visit": {
+                                                                            "type": "boolean"
                                                                           },
                                                                           "createdAt": {
                                                                             "type": "string",
@@ -4768,6 +4774,9 @@
                                                                                 }
                                                                               }
                                                                             },
+                                                                            "desc": {
+                                                                              "type": "string"
+                                                                            },
                                                                             "createdAt": {
                                                                               "type": "string",
                                                                               "format": "date-time"
@@ -4958,6 +4967,9 @@
                                                                     }
                                                                   }
                                                                 }
+                                                              },
+                                                              "initial_visit": {
+                                                                "type": "boolean"
                                                               },
                                                               "createdAt": {
                                                                 "type": "string",
@@ -6941,6 +6953,9 @@
                                           }
                                         }
                                       },
+                                      "desc": {
+                                        "type": "string"
+                                      },
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -7661,6 +7676,9 @@
                               }
                             }
                           }
+                        },
+                        "initial_visit": {
+                          "type": "boolean"
                         },
                         "createdAt": {
                           "type": "string",
@@ -10005,6 +10023,9 @@
                                         }
                                       }
                                     },
+                                    "initial_visit": {
+                                      "type": "boolean"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -10280,6 +10301,9 @@
                           }
                         }
                       },
+                      "desc": {
+                        "type": "string"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -10441,6 +10465,9 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "desc": {
+                "type": "string"
               }
             }
           }
@@ -12047,6 +12074,9 @@
                                           }
                                         }
                                       },
+                                      "desc": {
+                                        "type": "string"
+                                      },
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -12768,6 +12798,9 @@
                             }
                           }
                         },
+                        "initial_visit": {
+                          "type": "boolean"
+                        },
                         "createdAt": {
                           "type": "string",
                           "format": "date-time"
@@ -12836,6 +12869,9 @@
                 }
               }
             }
+          },
+          "desc": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -14960,6 +14996,9 @@
                                         }
                                       }
                                     },
+                                    "desc": {
+                                      "type": "string"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -15680,6 +15719,9 @@
                             }
                           }
                         }
+                      },
+                      "initial_visit": {
+                        "type": "boolean"
                       },
                       "createdAt": {
                         "type": "string",
@@ -17474,6 +17516,9 @@
                                         }
                                       }
                                     },
+                                    "desc": {
+                                      "type": "string"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -18194,6 +18239,9 @@
                             }
                           }
                         }
+                      },
+                      "initial_visit": {
+                        "type": "boolean"
                       },
                       "createdAt": {
                         "type": "string",
@@ -20129,6 +20177,9 @@
                                         }
                                       }
                                     },
+                                    "desc": {
+                                      "type": "string"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -20849,6 +20900,9 @@
                             }
                           }
                         }
+                      },
+                      "initial_visit": {
+                        "type": "boolean"
                       },
                       "createdAt": {
                         "type": "string",
@@ -22896,6 +22950,9 @@
                                                                                             }
                                                                                           }
                                                                                         },
+                                                                                        "desc": {
+                                                                                          "type": "string"
+                                                                                        },
                                                                                         "createdAt": {
                                                                                           "type": "string",
                                                                                           "format": "date-time"
@@ -23086,6 +23143,9 @@
                                                                                 }
                                                                               }
                                                                             }
+                                                                          },
+                                                                          "initial_visit": {
+                                                                            "type": "boolean"
                                                                           },
                                                                           "createdAt": {
                                                                             "type": "string",
@@ -25459,6 +25519,9 @@
                                                                               }
                                                                             }
                                                                           },
+                                                                          "desc": {
+                                                                            "type": "string"
+                                                                          },
                                                                           "createdAt": {
                                                                             "type": "string",
                                                                             "format": "date-time"
@@ -25649,6 +25712,9 @@
                                                                   }
                                                                 }
                                                               }
+                                                            },
+                                                            "initial_visit": {
+                                                              "type": "boolean"
                                                             },
                                                             "createdAt": {
                                                               "type": "string",
@@ -27647,6 +27713,9 @@
                                           }
                                         }
                                       },
+                                      "desc": {
+                                        "type": "string"
+                                      },
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -28367,6 +28436,9 @@
                               }
                             }
                           }
+                        },
+                        "initial_visit": {
+                          "type": "boolean"
                         },
                         "createdAt": {
                           "type": "string",
@@ -36019,7 +36091,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successfull registration",
+            "description": "Successful registration",
             "content": {
               "application/json": {
                 "schema": {

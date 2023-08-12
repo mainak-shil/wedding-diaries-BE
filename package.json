@@ -7,18 +7,22 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "start:local": "NODE_ENV=LOCAL && strapi develop",
+    "start:dev": "NODE_ENV=DEV && strapi develop"
   },
   "devDependencies": {},
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
-    "@strapi/plugin-documentation": "4.11.4",
-    "@strapi/plugin-i18n": "4.11.4",
-    "@strapi/plugin-users-permissions": "4.11.4",
-    "@strapi/provider-email-sendgrid": "^4.11.4",
-    "@strapi/strapi": "4.11.4",
+    "@strapi/plugin-documentation": "4.12.1",
+    "@strapi/plugin-i18n": "4.12.1",
+    "@strapi/plugin-users-permissions": "4.12.1",
+    "@strapi/provider-email-sendgrid": "^4.12.1",
+    "@strapi/strapi": "4.12.1",
     "csv-parser": "^3.0.0",
-    "pg": "^8.11.0"
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.0",
+    "strapi-plugin-populate-deep": "^3.0.0"
   },
   "author": {
     "name": "Mainak Shil"

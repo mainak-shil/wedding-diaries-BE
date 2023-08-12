@@ -26,6 +26,9 @@
       "relation": "oneToMany",
       "target": "api::doc.doc",
       "mappedBy": "doc_folder"
+    },
+    "desc": {
+      "type": "text"
     }
   }
 }
