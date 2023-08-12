@@ -4,21 +4,24 @@
   "info": {
     "singularName": "doc",
     "pluralName": "docs",
-    "displayName": "Doc"
+    "displayName": "Doc",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
     "file": {
-      "allowedTypes": [
-        "images",
-        "files"
-      ],
       "type": "media",
       "multiple": true,
-      "required": true
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "doc_folder": {
       "type": "relation",

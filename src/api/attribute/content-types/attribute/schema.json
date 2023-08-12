@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -17,12 +17,7 @@
     },
     "type": {
       "type": "enumeration",
-      "enum": [
-        "[minValue,maxValue]",
-        "Text",
-        "Number",
-        "[Lat,Lng]"
-      ]
+      "enum": ["[minValue,maxValue]", "Text", "Number", "[Lat,Lng]"]
     },
     "category": {
       "type": "relation",
