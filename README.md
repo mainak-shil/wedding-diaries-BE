@@ -55,3 +55,11 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 ---
 
 <sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+
+
+###### PROD
+pm2 commands https://pm2.keymetrics.io/docs/usage/quick-start/
+
+### start server
+pm2 --name dev_wedd start "npm run start"
+pm2 reload dev_wedd

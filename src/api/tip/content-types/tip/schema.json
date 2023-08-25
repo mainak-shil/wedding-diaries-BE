@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tips",
+  "info": {
+    "singularName": "tip",
+    "pluralName": "tips",
+    "displayName": "Tip"
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "tip_contents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tip-content.tip-content",
+      "mappedBy": "tip"
+    }
+  }
+}

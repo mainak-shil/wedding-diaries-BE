@@ -115,18 +115,6 @@
       "type": "string",
       "default": "[0,0]"
     },
-    "partner": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "user_partner"
-    },
-    "user_partner": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "mappedBy": "partner"
-    },
     "hire_to": {
       "type": "relation",
       "relation": "manyToMany",
