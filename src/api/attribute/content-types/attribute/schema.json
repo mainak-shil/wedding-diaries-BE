@@ -17,11 +17,16 @@
     },
     "type": {
       "type": "enumeration",
-      "enum": ["[minValue,maxValue]", "Text", "Number", "[Lat,Lng]"]
+      "enum": [
+        "[minValue,maxValue]",
+        "Text",
+        "Number",
+        "[Lat,Lng]"
+      ]
     },
-    "category": {
+    "categories": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "attributes"
     },
