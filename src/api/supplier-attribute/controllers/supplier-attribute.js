@@ -4,8 +4,11 @@
  * custom controller
  */
 
-const { POPULATE } = require('../../../utils/config');
-const { matchAttributesBasedOnTypes } = require('../../../utils/helper');
+const { POPULATE, SELECT } = require('../../../utils/config');
+const {
+  matchAttributesBasedOnTypes,
+  sendAck,
+} = require('../../../utils/helper');
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
@@ -30,58 +33,54 @@ module.exports = createCoreController(
             user: POPULATE.user,
           },
         });
-
-      console.log(
-        'filterBasedOnCategory',
-        JSON.stringify(filterBasedOnCategory)
-      );
-
-      const supplier_attributes_ids = filterBasedOnCategory.filter(obj1 => {
-        const userAttributes = attributes.filter(attr => attr.id === obj1.id);
-        return userAttributes.every(userAttr => {
-          const supplierAttribute = obj1.supplier_attributes.find(
-            attr => attr.id === userAttr.id
-          );
+      // Filter and map supplier attribute IDs based on matching conditions
+      const supplier_attributes_ids = filterBasedOnCategory
+        .filter(
+          obj1 =>
+            attributes.some(user_attributes => obj1.id === user_attributes.id) // filter user selected type of attributes
+        )
+        .filter(obj1 => {
+          const supplierAttribute = obj1.supplier_attributes[0]; // pick 0'th as, multiple means user have multiple attribute values
+          // console.log('supplierAttribute',supplierAttribute);
+          const userAttribute = attributes.find(attr => attr.id === obj1.id);
+          // console.log('userAttribute',userAttribute);
           return matchAttributesBasedOnTypes(
             obj1.type,
-            userAttr.value,
+            userAttribute.value,
             supplierAttribute?.attribute_value
           );
+        })
+        .map(obj1 => obj1.supplier_attributes[0]?.id);
+      // console.log('supplier_attributes_ids',supplier_attributes_ids);
+
+      // Fetch suppliers based on filtered supplier attribute IDs
+      const findSuppliers = await strapi.db
+        .query('api::supplier.supplier')
+        .findMany({
+          where: {
+            supplier_attributes: {
+              id: supplier_attributes_ids,
+            },
+          },
+          //! custom populate
+          populate: {
+            ['user']: {
+              select: SELECT.user.select,
+              populate: {
+                user_image: true,
+              },
+            },
+          },
         });
-      });
 
-      // Filter and map supplier attribute IDs based on matching conditions
-      // const supplier_attributes_ids = filterBasedOnCategory
-      //   .filter(obj1 =>
-      //     attributes.some(user_attributes => obj1.id === user_attributes.id)
-      //   )
-      //   .filter(obj1 => {
-      //     const supplierAttribute = obj1.supplier_attributes[0];
-      //     const userAttribute = attributes.find(attr => attr.id === obj1.id);
-      //     return matchAttributesBasedOnTypes(
-      //       obj1.type,
-      //       userAttribute.value,
-      //       supplierAttribute?.attribute_value
-      //     );
-      //   })
-      //   .map(obj1 => obj1.supplier_attributes[0]?.id);
-
-      // // Fetch suppliers based on filtered supplier attribute IDs
-      // const findSuppliers = await strapi.db
-      //   .query('api::supplier.supplier')
-      //   .findMany({
-      //     where: {
-      //       supplier_attributes: {
-      //         id: supplier_attributes_ids,
-      //       },
-      //     },
-      //     populate: {
-      //       user: POPULATE.user,
-      //     },
-      //   });
-
-      // ctx.body = findSuppliers;
-      ctx.body = supplier_attributes_ids;
+      if (!findSuppliers.length) {
+        return sendAck({
+          message: 'No supplier present with current filters',
+          ctx,
+          statusCode: 400,
+        });
+      }
+      sendAck({ ctx, data: findSuppliers });
     },
   })
 );

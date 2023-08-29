@@ -66,4 +66,36 @@ module.exports = createCoreController('api::wedding.wedding', ({ strapi }) => ({
     });
     sendAck({ ctx, data: wedding });
   },
+  //!todo
+  async supplierProjects(ctx) {
+    //! get wedding relations of users <- hired_to <- supplier
+
+    //! find user, hired by the user
+    const findHiredByUsers = await strapi.db
+      .query('plugin::users-permissions.user')
+      .findOne({
+        where: {
+          id: ctx.state.user.id,
+        },
+        populate: { hired_by: true },
+      });
+    if (!findHiredByUsers) {
+      return sendAck({
+        ctx,
+        message: `Sorry! We could not found the users that hired you!`,
+        statusCode: 404,
+      });
+    }
+    //! find that user in wedding table
+    //! get wedding users, patners
+    const wedding = await strapi.db.query('api::wedding.wedding').findMany({
+      where: {
+        users: hireByUserIds,
+      },
+      populate: { users: POPULATE.user },
+    });
+
+
+    sendAck({ ctx, data: findHiredByUsers });
+  },
 }));

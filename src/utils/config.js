@@ -5,7 +5,7 @@ const ATTRIBUTE_FILTER_TYPES = {
 };
 
 const POPULATE = {
-  user: { select: ['id', 'username', 'email', 'user_image'] },
+  user: { select: ['id', 'username', 'email'] },
 };
 const SELECT = {
   user: { select: ['id', 'username', 'email'] },

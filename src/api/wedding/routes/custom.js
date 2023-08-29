@@ -10,5 +10,10 @@ module.exports = {
       path: '/get-all-wedding-hired-for',
       handler: 'wedding.getAllWeedingHiredFor',
     },
+    {
+      method: 'GET',
+      path: '/get-supplier-projects',
+      handler: 'wedding.supplierProjects',
+    },
   ],
 };
