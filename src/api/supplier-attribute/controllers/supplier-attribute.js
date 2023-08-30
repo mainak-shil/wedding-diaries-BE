@@ -1,7 +1,8 @@
 'use strict';
 /**
  * supplier-attribute controller
- * custom controller
+ //! custom controller
+ //! custom populate
  */
 
 const { POPULATE, SELECT } = require('../../../utils/config');
@@ -22,11 +23,7 @@ module.exports = createCoreController(
       const filterBasedOnCategory = await strapi.db
         .query('api::attribute.attribute')
         .findMany({
-          where: {
-            category: {
-              id: category_id,
-            },
-          },
+          where: { categories: { id: category_id } },
           populate: {
             category: true,
             supplier_attributes: true,
