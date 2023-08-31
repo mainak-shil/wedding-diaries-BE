@@ -20,9 +20,9 @@
     },
     "supplier_attributes": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::supplier-attribute.supplier-attribute",
-      "mappedBy": "supplier"
+      "mappedBy": "suppliers"
     },
     "user": {
       "type": "relation",
