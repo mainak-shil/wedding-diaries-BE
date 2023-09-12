@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "type": {
       "type": "enumeration",
@@ -22,13 +23,8 @@
         "Text",
         "Number",
         "[Lat,Lng]"
-      ]
-    },
-    "categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "inversedBy": "attributes"
+      ],
+      "required": true
     },
     "supplier_attributes": {
       "type": "relation",
@@ -36,11 +32,11 @@
       "target": "api::supplier-attribute.supplier-attribute",
       "mappedBy": "attribute"
     },
-    "user": {
+    "categories": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "mappedBy": "partner"
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "attributes"
     }
   }
 }

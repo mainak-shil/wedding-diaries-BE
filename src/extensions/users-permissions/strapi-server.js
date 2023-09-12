@@ -1,5 +1,5 @@
 module.exports = plugin => {
-  // custom controller
+  //! custom controller
   plugin.controllers.user.updateMe = async ctx => {
     if (!ctx.state.user || !ctx.state.user.id) {
       return (ctx.response.status = 401);
@@ -16,7 +16,7 @@ module.exports = plugin => {
       });
   };
 
-  // custom route
+  //! custom route
   plugin.routes['content-api'].routes.push({
     method: 'PUT',
     path: '/user/me', //! singular as not to conflict existing routes

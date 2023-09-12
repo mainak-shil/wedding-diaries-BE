@@ -99,9 +99,6 @@
       "target": "api::doc-folder.doc-folder",
       "mappedBy": "users"
     },
-    "location": {
-      "type": "json"
-    },
     "supplier": {
       "type": "relation",
       "relation": "oneToOne",
@@ -110,10 +107,6 @@
     },
     "phone": {
       "type": "string"
-    },
-    "budget": {
-      "type": "string",
-      "default": "[0,0]"
     },
     "hire_to": {
       "type": "relation",
@@ -143,11 +136,16 @@
       "type": "boolean",
       "default": true
     },
-    "partner": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::attribute.attribute",
-      "inversedBy": "user"
+    "fb_link": {
+      "type": "string"
+    },
+    "insta_link": {
+      "type": "string"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "location.location"
     }
   }
 }

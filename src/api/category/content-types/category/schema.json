@@ -28,9 +28,9 @@
     },
     "suppliers": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::supplier.supplier",
-      "mappedBy": "category"
+      "mappedBy": "categories"
     },
     "attributes": {
       "type": "relation",

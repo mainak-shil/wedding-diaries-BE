@@ -12,23 +12,23 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "suppliers"
-    },
-    "supplier_attributes": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::supplier-attribute.supplier-attribute",
-      "mappedBy": "suppliers"
-    },
     "user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "supplier"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "suppliers"
+    },
+    "supplier_attributes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::supplier-attribute.supplier-attribute",
+      "mappedBy": "supplier"
     }
   }
 }
