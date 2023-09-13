@@ -1,19 +1,35 @@
+const { POPULATE, SELECT } = require('../../utils/config');
+const { sendAck } = require('../../utils/helper');
+/**
+ * user controller | update user | populate
+ //! custom controller
+ //! custom populate
+ */
+
 module.exports = plugin => {
-  //! custom controller
   plugin.controllers.user.updateMe = async ctx => {
     if (!ctx.state.user || !ctx.state.user.id) {
       return (ctx.response.status = 401);
     }
 
-    await strapi
+    const populate = {
+      user: POPULATE.user,
+    };
+    ctx.request.query?.populate?.map(e => (populate[e] = true));
+
+    console.log('populate', ctx.request.query.populate, populate);
+    const response = await strapi
       .query('plugin::users-permissions.user')
       .update({
         where: { id: ctx.state.user.id },
         data: ctx.request.body,
-      })
-      .then(res => {
-        ctx.response.status = 200;
+        populate,
       });
+
+    sendAck({
+      ctx,
+      data: response,
+    });
   };
 
   //! custom route
