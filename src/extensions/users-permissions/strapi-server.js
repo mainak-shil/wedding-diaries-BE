@@ -1,4 +1,4 @@
-const { POPULATE, SELECT } = require('../../utils/config');
+const { SELECT } = require('../../utils/config');
 const { sendAck } = require('../../utils/helper');
 /**
  * user controller | update user | populate
@@ -12,18 +12,15 @@ module.exports = plugin => {
       return (ctx.response.status = 401);
     }
 
-    const populate = {
-      user: POPULATE.user,
-    };
+    const populate = {};
     ctx.request.query?.populate?.map(e => (populate[e] = true));
-
-    console.log('populate', ctx.request.query.populate, populate);
     const response = await strapi
       .query('plugin::users-permissions.user')
       .update({
         where: { id: ctx.state.user.id },
         data: ctx.request.body,
         populate,
+        select: SELECT.user.select,
       });
 
     sendAck({

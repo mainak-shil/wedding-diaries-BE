@@ -5,7 +5,7 @@
  //! custom populate
  */
 
-const { POPULATE, SELECT } = require('../../../utils/config');
+const { SELECT } = require('../../../utils/config');
 const {
   matchAttributesBasedOnTypes,
   sendAck,
@@ -42,9 +42,9 @@ module.exports = createCoreController(
           populate: {
             category: true,
             supplier_attributes: true,
-            user: POPULATE.user,
           },
         });
+      console.log(filterBasedOnCategory);
 
       let supplier_attributes_Ids = filterBasedOnCategory
         .map(dbAttributes => {
