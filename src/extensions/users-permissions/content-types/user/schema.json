@@ -146,6 +146,12 @@
       "type": "component",
       "repeatable": false,
       "component": "location.location"
+    },
+    "chat_rooms": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::chat-room.chat-room",
+      "inversedBy": "users"
     }
   }
 }

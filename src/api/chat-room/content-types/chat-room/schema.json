@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chat_rooms",
+  "info": {
+    "singularName": "chat-room",
+    "pluralName": "chat-rooms",
+    "displayName": "ChatRoom",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "chat_id": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "chat_rooms"
+    }
+  }
+}
