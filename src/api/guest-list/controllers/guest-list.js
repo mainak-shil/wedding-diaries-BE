@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * #custom_controller
- * guest-list controller
- */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 const { sendAck, csvParserAddUser } = require('../../../utils/helper');

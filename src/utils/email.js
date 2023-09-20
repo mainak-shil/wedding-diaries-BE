@@ -1,6 +1,5 @@
 async function sendVerificationEmail(to, verificationCode) {
   try {
-    // Use the email provider configured in Strapi to send the email
     await strapi.plugins['email'].services.email.send({
       to,
       subject: 'Email Verification',

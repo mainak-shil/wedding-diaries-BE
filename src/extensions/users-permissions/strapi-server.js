@@ -1,10 +1,4 @@
-const { SELECT } = require('../../utils/config');
 const { sendAck } = require('../../utils/helper');
-/**
- * user controller | update user | populate
- //! custom controller
- //! custom populate
- */
 
 module.exports = plugin => {
   plugin.controllers.user.updateMe = async ctx => {
@@ -20,7 +14,7 @@ module.exports = plugin => {
         where: { id: ctx.state.user.id },
         data: ctx.request.body,
         populate,
-        select: SELECT.user.select,
+        select: ['id', 'username', 'email', 'name'],
       });
 
     sendAck({
@@ -29,11 +23,10 @@ module.exports = plugin => {
     });
   };
 
-  //! custom route
   plugin.routes['content-api'].routes.push({
     method: 'PUT',
-    path: '/user/me', //! singular as not to conflict existing routes
-    handler: 'user.updateMe', // ! enable NEW** route in user settings
+    path: '/user/me',
+    handler: 'user.updateMe',
     config: {
       prefix: '',
       policies: [],

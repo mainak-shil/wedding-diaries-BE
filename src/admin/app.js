@@ -14,7 +14,6 @@ const config = {
 };
 
 const bootstrap = app => {
-  console.log('bootstrap', app);
 };
 
 export default {

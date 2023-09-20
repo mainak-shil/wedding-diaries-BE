@@ -1,11 +1,5 @@
 'use strict';
-/**
- * supplier-attribute controller
- //! custom controller
- //! custom populate
- */
 
-const { SELECT } = require('../../../utils/config');
 const {
   matchAttributesBasedOnTypes,
   sendAck,
@@ -32,7 +26,6 @@ module.exports = createCoreController(
         supplier_attributes: { attribute: { id: e.id } },
       }));
 
-      // Fetch attributes based on category ID
       const filterBasedOnCategory = await strapi.db
         .query('api::attribute.attribute')
         .findMany({
@@ -44,7 +37,6 @@ module.exports = createCoreController(
             supplier_attributes: true,
           },
         });
-      console.log(filterBasedOnCategory);
 
       let supplier_attributes_Ids = filterBasedOnCategory
         .map(dbAttributes => {
@@ -76,7 +68,7 @@ module.exports = createCoreController(
           },
           populate: {
             ['user']: {
-              select: SELECT.user.select,
+              select: ['id', 'username', 'email', 'name'],
               populate: {
                 user_image: true,
                 address: true,
@@ -93,7 +85,6 @@ module.exports = createCoreController(
       }
       let findSuppliersBasedOnLocation = [];
       if (user_lat_lng) {
-        //! user wants to filter in range
         findSuppliersBasedOnLocation = findSuppliers.filter(({ user }) => {
           return isUserInRange(user_lat_lng, [
             user?.address?.latitude,
