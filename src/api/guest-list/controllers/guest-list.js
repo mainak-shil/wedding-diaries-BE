@@ -1,6 +1,7 @@
 'use strict';
 
 /**
+ * #custom_controller
  * guest-list controller
  */
 
@@ -39,7 +40,7 @@ module.exports = createCoreController(
       if (purgeData.length) {
         sendAck({
           ctx,
-          message: `Sorry! Due to validation errors we could not add these items, but rest of the items were added.`,
+          message: `Sorry! Due to validation errors we could not save these items, but rest of the items were saved.`,
           statusCode: 422,
           data: purgeData,
         });

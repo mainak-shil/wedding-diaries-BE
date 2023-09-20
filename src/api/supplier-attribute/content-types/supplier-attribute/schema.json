@@ -4,26 +4,27 @@
   "info": {
     "singularName": "supplier-attribute",
     "pluralName": "supplier-attributes",
-    "displayName": "SupplierAttribute"
+    "displayName": "SupplierAttribute",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
     "attribute_value": {
       "type": "string"
     },
-    "attribute": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::attribute.attribute",
-      "inversedBy": "supplier_attributes"
-    },
     "supplier": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::supplier.supplier",
+      "inversedBy": "supplier_attributes"
+    },
+    "attribute": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::attribute.attribute",
       "inversedBy": "supplier_attributes"
     }
   }

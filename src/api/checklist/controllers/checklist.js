@@ -1,17 +1,19 @@
 'use strict';
 
 /**
+ * #custom_controller
  * checklist controller
- * custom controller
  */
 const { createCoreController } = require('@strapi/strapi').factories;
 const _ = require('lodash');
+const { subtractMonths, sendAck } = require('../../../utils/helper');
+var { format } = require('date-fns');
 
 module.exports = createCoreController(
   'api::checklist.checklist',
   ({ strapi }) => ({
-    async getCustomChecklist(ctx) {
-      // Fetch checklist entries with select fields and populate users
+    async groupChecklistBasedOnMonthBeforeAndWeddingDate(ctx) {
+      //! Fetch checklist entries with select fields and populate users
       const entries = await strapi.db
         .query('api::checklist.checklist')
         .findMany({
@@ -19,31 +21,56 @@ module.exports = createCoreController(
           populate: { users: true },
         });
 
-      const currentDate = new Date();
+      //! get wedding date
+      const weddingUser = await strapi.db
+        .query('api::wedding.wedding')
+        .findOne({
+          where: {
+            users: [ctx.state.user.id],
+          },
+          select: 'date',
+        });
 
+      if (!weddingUser) {
+        return sendAck({
+          message:
+            'Your wedding date is not added in the profile, please add the wedding date',
+          ctx,
+          statusCode: 400,
+        });
+      }
+
+      let checkListObj = {};
       // Process each checklist entry
-      const entities = entries.map(entity => {
-        const monthsBefore = entity.months_before;
-        const newDate = new Date(currentDate);
-        newDate.setMonth(newDate.getMonth() - monthsBefore);
+      entries.map(entity => {
+        //! calc the date from wedding date
+        const checklistDate = format(
+          subtractMonths(new Date(weddingUser.date), entity.months_before),
+          'MMM d, yyyy'
+        );
 
-        // Check if the current user is present in the users list of the entry
+        //! Check if the current user is present in the users list of the entry
+        //! i.e user have checked the item
         const isCurrentUserPresent = entity.users?.find(
           user => user.id === ctx.state.user.id
         );
 
-        // Omit the 'users' field from the returned entity
-        return _.omit(
+        const checklistMod = _.omit(
           {
             ...entity,
             is_checked: !!isCurrentUserPresent,
-            calculatedDate: newDate,
           },
           ['users']
         );
+
+        if (!checkListObj[checklistDate]) {
+          checkListObj[checklistDate] = [checklistMod];
+        } else {
+          checkListObj[checklistDate].push(checklistMod);
+        }
       });
 
-      ctx.send(entities); // Send the processed entities as the response
+      sendAck({ ctx, data: checkListObj }); //! Send the processed entities as the response
     },
   })
 );

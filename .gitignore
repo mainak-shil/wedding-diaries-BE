@@ -119,4 +119,7 @@ build
 ############################
 .prettierrc
 .eslintrc
-config/database.js
+docs
+.env*
+.vscode
+yarn.lock

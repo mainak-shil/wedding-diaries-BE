@@ -1,5 +1,7 @@
 'use strict';
 const sgMail = require('@sendgrid/mail');
+const dotenv = require('dotenv');
+const path = require('path');
 
 module.exports = {
   /**
@@ -8,7 +10,16 @@ module.exports = {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/*{ strapi }*/) {},
+  register(/*{ strapi }*/) {
+    dotenv.config({
+      path:
+        process.env.NODE_ENV === 'LOCAL'
+          ? path.join(process.cwd(), '.env.local')
+          : process.env.NODE_ENV === 'DEV'
+          ? path.join(process.cwd(), '.env.dev')
+          : path.join(process.cwd(), '.env.prod'),
+    });
+  },
 
   /**
    * An asynchronous bootstrap function that runs before

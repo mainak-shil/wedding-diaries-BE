@@ -1,3 +1,5 @@
+import favicon from './extensions/favicon.ico';
+
 const config = {
   translations: {
     en: {
@@ -5,6 +7,9 @@ const config = {
       'Auth.form.welcome.subtitle': 'Log in to your account',
       'app.components.LeftMenu.navbrand.title': 'Dashboard',
     },
+  },
+  head: {
+    favicon,
   },
 };
 

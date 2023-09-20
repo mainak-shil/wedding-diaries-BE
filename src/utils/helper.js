@@ -39,12 +39,6 @@ function matchAttributesBasedOnTypes(type, user_value, supplier_value) {
       return minValue >= attributeMinValue && maxValue <= attributeMaxValue; // Check if user range is within supplier range
     case ATTRIBUTE_FILTER_TYPES.TEXT:
       return supplier_value.toLowerCase() === user_value.toLowerCase(); // Compare case-insensitive text values
-    case ATTRIBUTE_FILTER_TYPES.LAT_LONG:
-      const [userLat, userLng] = JSON.parse(user_value); // Parse user latitude and longitude
-      const [lat, lng] = JSON.parse(supplier_value); // Parse supplier latitude and longitude
-      const distanceInKM = calcDistanceInKM(userLat, userLng, lat, lng); // Calculate distance in kilometers
-      console.log('km', distanceInKM);
-      return distanceInKM <= KM_RANGE_SEARCH; // Check if distance is within the desired threshold (1 km in this case)
     default:
       return false; // Default case if type doesn't match any defined cases
   }
@@ -52,6 +46,22 @@ function matchAttributesBasedOnTypes(type, user_value, supplier_value) {
 function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
+}
+
+function isUserInRange(user_value, supplier_value) {
+  const [userLat, userLng] = user_value || []; // Parse user latitude and longitude
+  const [lat, lng] = supplier_value || []; // Parse supplier latitude and longitude
+  if (!userLat || !userLng || !lat || !lng) {
+    return false;
+  }
+  const distanceInKM = calcDistanceInKM(
+    parseFloat(userLat),
+    parseFloat(userLng),
+    parseFloat(lat),
+    parseFloat(lng)
+  ); // Calculate distance in kilometers
+  console.log('km', distanceInKM);
+  return distanceInKM <= KM_RANGE_SEARCH;
 }
 
 function sendAck({ ctx, message, statusCode = 200, data }) {
@@ -62,8 +72,9 @@ function csvParserAddUser(filePath, userId) {
   const jsonData = [];
   const purgeData = [];
   return new Promise(resolve => {
+    // .pipe(csv(['name', 'email', 'phone']))
     fs.createReadStream(filePath)
-      .pipe(csv(['name', 'email', 'phone']))
+      .pipe(csv())
       .on('data', data => {
         if (isValidEmail(data.email) && data.phone.length && data.name.length) {
           jsonData.push({ ...data, user: { id: userId } });
@@ -97,6 +108,10 @@ async function sendMailUsingSendGrid(msg) {
     });
 }
 
+function subtractMonths(date, months) {
+  return date.setMonth(date.getMonth() - months);
+}
+
 module.exports = {
   calcDistanceInKM,
   matchAttributesBasedOnTypes,
@@ -104,4 +119,6 @@ module.exports = {
   sendAck,
   csvParserAddUser,
   sendMailUsingSendGrid,
+  subtractMonths,
+  isUserInRange,
 };

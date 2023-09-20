@@ -5,9 +5,12 @@ const ATTRIBUTE_FILTER_TYPES = {
 };
 
 const POPULATE = {
-  user: { select: ['id', 'username', 'email'] },
+  user: { populate: ['user_image', 'address'] },
+};
+const SELECT = {
+  user: { select: ['id', 'username', 'email', 'name'] },
 };
 
 const KM_RANGE_SEARCH = 10;
 
-module.exports = { ATTRIBUTE_FILTER_TYPES, POPULATE, KM_RANGE_SEARCH };
+module.exports = { ATTRIBUTE_FILTER_TYPES, POPULATE, KM_RANGE_SEARCH, SELECT };

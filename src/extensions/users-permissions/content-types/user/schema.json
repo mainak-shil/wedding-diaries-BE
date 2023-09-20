@@ -67,7 +67,11 @@
     },
     "user_type": {
       "type": "enumeration",
-      "enum": ["bride", "groom", "supplier"]
+      "enum": [
+        "bride",
+        "groom",
+        "supplier"
+      ]
     },
     "posts": {
       "type": "relation",
@@ -79,7 +83,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "checklists": {
       "type": "relation",
@@ -93,9 +99,6 @@
       "target": "api::doc-folder.doc-folder",
       "mappedBy": "users"
     },
-    "location": {
-      "type": "json"
-    },
     "supplier": {
       "type": "relation",
       "relation": "oneToOne",
@@ -104,22 +107,6 @@
     },
     "phone": {
       "type": "string"
-    },
-    "budget": {
-      "type": "string",
-      "default": "[0,0]"
-    },
-    "partner": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "user_partner"
-    },
-    "user_partner": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "mappedBy": "partner"
     },
     "hire_to": {
       "type": "relation",
@@ -144,6 +131,30 @@
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "mappedBy": "fav_to"
+    },
+    "initial_visit": {
+      "type": "boolean",
+      "default": true
+    },
+    "fb_link": {
+      "type": "string"
+    },
+    "insta_link": {
+      "type": "string"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "location.location"
+    },
+    "chat_rooms": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::chat-room.chat-room",
+      "inversedBy": "users"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }

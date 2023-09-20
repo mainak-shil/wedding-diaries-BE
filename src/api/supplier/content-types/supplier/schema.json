@@ -8,13 +8,19 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "category": {
+    "user": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "supplier"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "suppliers"
     },
@@ -23,12 +29,6 @@
       "relation": "oneToMany",
       "target": "api::supplier-attribute.supplier-attribute",
       "mappedBy": "supplier"
-    },
-    "user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "supplier"
     }
   }
 }

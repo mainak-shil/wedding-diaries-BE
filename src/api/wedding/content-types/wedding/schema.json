@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -24,9 +24,6 @@
       "type": "string",
       "default": "[0,0]"
     },
-    "location": {
-      "type": "json"
-    },
     "no_of_guests": {
       "type": "integer"
     },
@@ -37,10 +34,18 @@
         "Symbolic",
         "Church",
         "Temple",
-        "Gurudwara",
+        "Gurdwara",
         "Masjid",
         "Other"
       ]
+    },
+    "love_story": {
+      "type": "text"
+    },
+    "wedding_address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "location.location"
     }
   }
 }

@@ -8,15 +8,17 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "desc": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "user": {
       "type": "relation",

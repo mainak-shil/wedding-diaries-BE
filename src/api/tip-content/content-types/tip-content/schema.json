@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tip_contents",
+  "info": {
+    "singularName": "tip-content",
+    "pluralName": "tip-contents",
+    "displayName": "TipContent"
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "text"
+    },
+    "tip": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tip.tip",
+      "inversedBy": "tip_contents"
+    }
+  }
+}
