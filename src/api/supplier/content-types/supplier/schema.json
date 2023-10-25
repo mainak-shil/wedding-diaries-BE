@@ -29,6 +29,9 @@
       "relation": "oneToMany",
       "target": "api::supplier-attribute.supplier-attribute",
       "mappedBy": "supplier"
+    },
+    "hr_rate": {
+      "type": "string"
     }
   }
 }

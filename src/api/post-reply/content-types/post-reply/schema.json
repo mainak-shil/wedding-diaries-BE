@@ -4,7 +4,8 @@
   "info": {
     "singularName": "post-reply",
     "pluralName": "post-replies",
-    "displayName": "PostReply"
+    "displayName": "PostReply",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false

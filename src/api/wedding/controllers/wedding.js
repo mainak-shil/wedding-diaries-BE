@@ -39,7 +39,6 @@ module.exports = createCoreController('api::wedding.wedding', ({ strapi }) => ({
     });
     sendAck({ ctx, data: wedding });
   },
-
   async getAllWeedingHiredFor(ctx) {
     const findSupplierHiredByUser = await strapi.db
       .query('plugin::users-permissions.user')

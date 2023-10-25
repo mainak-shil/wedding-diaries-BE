@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-09-16T20:07:41.047Z"
+    "x-generation-date": "2023-10-25T08:49:01.601Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2445,6 +2445,9 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "hr_rate": {
+                                      "type": "string"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -5201,6 +5204,9 @@
                             }
                           }
                         },
+                        "hr_rate": {
+                          "type": "string"
+                        },
                         "createdAt": {
                           "type": "string",
                           "format": "date-time"
@@ -7480,6 +7486,9 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "hr_rate": {
+                                      "type": "string"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -9999,6 +10008,9 @@
                                         }
                                       }
                                     },
+                                    "hr_rate": {
+                                      "type": "string"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -12369,6 +12381,9 @@
                                                       }
                                                     }
                                                   }
+                                                },
+                                                "hr_rate": {
+                                                  "type": "string"
                                                 },
                                                 "createdAt": {
                                                   "type": "string",
@@ -15159,6 +15174,9 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "hr_rate": {
+                                      "type": "string"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -18101,6 +18119,9 @@
                                       }
                                     }
                                   },
+                                  "hr_rate": {
+                                    "type": "string"
+                                  },
                                   "createdAt": {
                                     "type": "string",
                                     "format": "date-time"
@@ -20647,6 +20668,9 @@
                                         }
                                       }
                                     }
+                                  },
+                                  "hr_rate": {
+                                    "type": "string"
                                   },
                                   "createdAt": {
                                     "type": "string",
@@ -23332,6 +23356,9 @@
                                       }
                                     }
                                   },
+                                  "hr_rate": {
+                                    "type": "string"
+                                  },
                                   "createdAt": {
                                     "type": "string",
                                     "format": "date-time"
@@ -23756,6 +23783,9 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "hr_rate": {
+                "type": "string"
               }
             }
           }
@@ -25865,6 +25895,9 @@
                                       }
                                     }
                                   },
+                                  "hr_rate": {
+                                    "type": "string"
+                                  },
                                   "createdAt": {
                                     "type": "string",
                                     "format": "date-time"
@@ -26198,6 +26231,9 @@
                 }
               }
             }
+          },
+          "hr_rate": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -28655,6 +28691,9 @@
                             }
                           }
                         }
+                      },
+                      "hr_rate": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
@@ -32049,6 +32088,9 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "hr_rate": {
+                                      "type": "string"
                                     },
                                     "createdAt": {
                                       "type": "string",
