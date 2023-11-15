@@ -4,7 +4,8 @@
   "info": {
     "singularName": "faq",
     "pluralName": "faqs",
-    "displayName": "Faq"
+    "displayName": "Faq",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -17,9 +18,15 @@
     "description": {
       "type": "text"
     },
-    "Category": {
+    "category": {
       "type": "enumeration",
-      "enum": ["Payment", "Post", "Category", "Others"]
+      "enum": [
+        "Payment",
+        "Wall Post",
+        "Suppliers",
+        "About Couples",
+        "Others"
+      ]
     }
   }
 }
