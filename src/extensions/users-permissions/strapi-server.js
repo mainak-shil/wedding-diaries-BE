@@ -14,7 +14,7 @@ module.exports = plugin => {
         where: { id: ctx.state.user.id },
         data: ctx.request.body,
         populate,
-        select: ['id', 'username', 'email', 'name'],
+        select: ['id', 'email', 'name', 'phone'],
       });
 
     sendAck({

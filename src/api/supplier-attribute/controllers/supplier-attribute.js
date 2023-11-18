@@ -68,7 +68,7 @@ module.exports = createCoreController(
           },
           populate: {
             ['user']: {
-              select: ['id', 'username', 'email', 'name'],
+              select: ['id', 'email', 'name'],
               populate: {
                 user_image: true,
                 address: true,
