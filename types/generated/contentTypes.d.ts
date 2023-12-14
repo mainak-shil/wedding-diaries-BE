@@ -712,6 +712,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'api::chat-room.chat-room'
     >;
     name: Attribute.String;
+    notifications: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::notification.notification'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1011,6 +1016,41 @@ export interface ApiGuestListGuestList extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::guest-list.guest-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNotificationNotification extends Schema.CollectionType {
+  collectionName: 'notifications';
+  info: {
+    singularName: 'notification';
+    pluralName: 'notifications';
+    displayName: 'Notification';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    message: Attribute.Text;
+    users: Attribute.Relation<
+      'api::notification.notification',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::notification.notification',
       'oneToOne',
       'admin::user'
     > &
@@ -1336,6 +1376,7 @@ declare module '@strapi/types' {
       'api::doc-folder.doc-folder': ApiDocFolderDocFolder;
       'api::faq.faq': ApiFaqFaq;
       'api::guest-list.guest-list': ApiGuestListGuestList;
+      'api::notification.notification': ApiNotificationNotification;
       'api::post.post': ApiPostPost;
       'api::post-reply.post-reply': ApiPostReplyPostReply;
       'api::supplier.supplier': ApiSupplierSupplier;

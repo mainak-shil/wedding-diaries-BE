@@ -155,6 +155,12 @@
     },
     "name": {
       "type": "string"
+    },
+    "notifications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::notification.notification",
+      "mappedBy": "users"
     }
   }
 }
