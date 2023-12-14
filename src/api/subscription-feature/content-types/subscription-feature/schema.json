@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscription_features",
+  "info": {
+    "singularName": "subscription-feature",
+    "pluralName": "subscription-features",
+    "displayName": "SubscriptionFeature"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "subscription": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subscription.subscription",
+      "inversedBy": "subscription_features"
+    }
+  }
+}

@@ -161,6 +161,12 @@
       "relation": "manyToMany",
       "target": "api::notification.notification",
       "mappedBy": "users"
+    },
+    "subscriptions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::subscription.subscription",
+      "mappedBy": "users"
     }
   }
 }

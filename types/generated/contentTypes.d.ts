@@ -717,6 +717,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToMany',
       'api::notification.notification'
     >;
+    subscriptions: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::subscription.subscription'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1137,6 +1142,83 @@ export interface ApiPostReplyPostReply extends Schema.CollectionType {
   };
 }
 
+export interface ApiSubscriptionSubscription extends Schema.CollectionType {
+  collectionName: 'subscriptions';
+  info: {
+    singularName: 'subscription';
+    pluralName: 'subscriptions';
+    displayName: 'Subscription';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    desc: Attribute.Text;
+    subscription_features: Attribute.Relation<
+      'api::subscription.subscription',
+      'oneToMany',
+      'api::subscription-feature.subscription-feature'
+    >;
+    users: Attribute.Relation<
+      'api::subscription.subscription',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subscription.subscription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::subscription.subscription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSubscriptionFeatureSubscriptionFeature
+  extends Schema.CollectionType {
+  collectionName: 'subscription_features';
+  info: {
+    singularName: 'subscription-feature';
+    pluralName: 'subscription-features';
+    displayName: 'SubscriptionFeature';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.Text;
+    subscription: Attribute.Relation<
+      'api::subscription-feature.subscription-feature',
+      'manyToOne',
+      'api::subscription.subscription'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subscription-feature.subscription-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::subscription-feature.subscription-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSupplierSupplier extends Schema.CollectionType {
   collectionName: 'suppliers';
   info: {
@@ -1379,6 +1461,8 @@ declare module '@strapi/types' {
       'api::notification.notification': ApiNotificationNotification;
       'api::post.post': ApiPostPost;
       'api::post-reply.post-reply': ApiPostReplyPostReply;
+      'api::subscription.subscription': ApiSubscriptionSubscription;
+      'api::subscription-feature.subscription-feature': ApiSubscriptionFeatureSubscriptionFeature;
       'api::supplier.supplier': ApiSupplierSupplier;
       'api::supplier-attribute.supplier-attribute': ApiSupplierAttributeSupplierAttribute;
       'api::tip.tip': ApiTipTip;
