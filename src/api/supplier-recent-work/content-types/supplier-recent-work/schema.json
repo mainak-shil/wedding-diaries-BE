@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "supplier_recent_works",
+  "info": {
+    "singularName": "supplier-recent-work",
+    "pluralName": "supplier-recent-works",
+    "displayName": "SupplierRecentWork"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "file": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "suppliers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::supplier.supplier",
+      "mappedBy": "supplier_recent_works"
+    }
+  }
+}

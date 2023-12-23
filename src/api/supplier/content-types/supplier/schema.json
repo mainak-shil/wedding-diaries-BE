@@ -30,8 +30,17 @@
       "target": "api::supplier-attribute.supplier-attribute",
       "mappedBy": "supplier"
     },
-    "hr_rate": {
-      "type": "string"
+    "supplier_packages": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::supplier-package.supplier-package",
+      "inversedBy": "suppliers"
+    },
+    "supplier_recent_works": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::supplier-recent-work.supplier-recent-work",
+      "inversedBy": "suppliers"
     }
   }
 }

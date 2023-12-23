@@ -1246,7 +1246,16 @@ export interface ApiSupplierSupplier extends Schema.CollectionType {
       'oneToMany',
       'api::supplier-attribute.supplier-attribute'
     >;
-    hr_rate: Attribute.String;
+    supplier_packages: Attribute.Relation<
+      'api::supplier.supplier',
+      'manyToMany',
+      'api::supplier-package.supplier-package'
+    >;
+    supplier_recent_works: Attribute.Relation<
+      'api::supplier.supplier',
+      'manyToMany',
+      'api::supplier-recent-work.supplier-recent-work'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1298,6 +1307,78 @@ export interface ApiSupplierAttributeSupplierAttribute
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::supplier-attribute.supplier-attribute',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSupplierPackageSupplierPackage
+  extends Schema.CollectionType {
+  collectionName: 'supplier_packages';
+  info: {
+    singularName: 'supplier-package';
+    pluralName: 'supplier-packages';
+    displayName: 'SupplierPackage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String;
+    desc: Attribute.Text;
+    rate: Attribute.Decimal;
+    suppliers: Attribute.Relation<
+      'api::supplier-package.supplier-package',
+      'manyToMany',
+      'api::supplier.supplier'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::supplier-package.supplier-package',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::supplier-package.supplier-package',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSupplierRecentWorkSupplierRecentWork
+  extends Schema.CollectionType {
+  collectionName: 'supplier_recent_works';
+  info: {
+    singularName: 'supplier-recent-work';
+    pluralName: 'supplier-recent-works';
+    displayName: 'SupplierRecentWork';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    file: Attribute.Media;
+    suppliers: Attribute.Relation<
+      'api::supplier-recent-work.supplier-recent-work',
+      'manyToMany',
+      'api::supplier.supplier'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::supplier-recent-work.supplier-recent-work',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::supplier-recent-work.supplier-recent-work',
       'oneToOne',
       'admin::user'
     > &
@@ -1465,6 +1546,8 @@ declare module '@strapi/types' {
       'api::subscription-feature.subscription-feature': ApiSubscriptionFeatureSubscriptionFeature;
       'api::supplier.supplier': ApiSupplierSupplier;
       'api::supplier-attribute.supplier-attribute': ApiSupplierAttributeSupplierAttribute;
+      'api::supplier-package.supplier-package': ApiSupplierPackageSupplierPackage;
+      'api::supplier-recent-work.supplier-recent-work': ApiSupplierRecentWorkSupplierRecentWork;
       'api::tip.tip': ApiTipTip;
       'api::tip-content.tip-content': ApiTipContentTipContent;
       'api::wedding.wedding': ApiWeddingWedding;

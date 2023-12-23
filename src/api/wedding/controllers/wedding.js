@@ -56,9 +56,10 @@ module.exports = createCoreController('api::wedding.wedding', ({ strapi }) => ({
         users: hireByUserIds,
       },
       populate: {
+        wedding_address: true,
         users: {
           populate: ['address', 'user_image'],
-          select: ['id', 'email', 'name', 'user_type'],
+          select: ['id', 'email', 'name', 'user_type', 'phone'],
         },
       },
     });
