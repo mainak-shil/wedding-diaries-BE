@@ -73,12 +73,6 @@
         "supplier"
       ]
     },
-    "posts": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::post.post",
-      "mappedBy": "post_view_users"
-    },
     "user_image": {
       "type": "media",
       "multiple": false,
@@ -167,6 +161,12 @@
       "relation": "manyToMany",
       "target": "api::subscription.subscription",
       "mappedBy": "users"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::post.post",
+      "mappedBy": "tags"
     }
   }
 }

@@ -660,11 +660,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.role'
     >;
     user_type: Attribute.Enumeration<['bride', 'groom', 'supplier']>;
-    posts: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'manyToMany',
-      'api::post.post'
-    >;
     user_image: Attribute.Media;
     checklists: Attribute.Relation<
       'plugin::users-permissions.user',
@@ -721,6 +716,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'manyToMany',
       'api::subscription.subscription'
+    >;
+    posts: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::post.post'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1082,7 +1082,7 @@ export interface ApiPostPost extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    post_view_users: Attribute.Relation<
+    tags: Attribute.Relation<
       'api::post.post',
       'manyToMany',
       'plugin::users-permissions.user'

@@ -25,7 +25,7 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "post_view_users": {
+    "tags": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
