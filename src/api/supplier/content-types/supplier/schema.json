@@ -30,17 +30,17 @@
       "target": "api::supplier-attribute.supplier-attribute",
       "mappedBy": "supplier"
     },
-    "supplier_packages": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::supplier-package.supplier-package",
-      "inversedBy": "suppliers"
-    },
     "supplier_recent_works": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::supplier-recent-work.supplier-recent-work",
       "inversedBy": "suppliers"
+    },
+    "supplier_packages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::supplier-package.supplier-package",
+      "mappedBy": "supplier"
     }
   }
 }

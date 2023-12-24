@@ -18,6 +18,13 @@
     "youtube_video_url": {
       "type": "string",
       "required": true
+    },
+    "user_type": {
+      "type": "enumeration",
+      "enum": [
+        "User",
+        "Supplier"
+      ]
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "supplier-package",
     "pluralName": "supplier-packages",
-    "displayName": "SupplierPackage"
+    "displayName": "SupplierPackage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -20,11 +21,11 @@
     "rate": {
       "type": "decimal"
     },
-    "suppliers": {
+    "supplier": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::supplier.supplier",
-      "mappedBy": "supplier_packages"
+      "inversedBy": "supplier_packages"
     }
   }
 }

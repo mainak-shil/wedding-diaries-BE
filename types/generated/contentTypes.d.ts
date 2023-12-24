@@ -1246,15 +1246,15 @@ export interface ApiSupplierSupplier extends Schema.CollectionType {
       'oneToMany',
       'api::supplier-attribute.supplier-attribute'
     >;
-    supplier_packages: Attribute.Relation<
-      'api::supplier.supplier',
-      'manyToMany',
-      'api::supplier-package.supplier-package'
-    >;
     supplier_recent_works: Attribute.Relation<
       'api::supplier.supplier',
       'manyToMany',
       'api::supplier-recent-work.supplier-recent-work'
+    >;
+    supplier_packages: Attribute.Relation<
+      'api::supplier.supplier',
+      'oneToMany',
+      'api::supplier-package.supplier-package'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1321,6 +1321,7 @@ export interface ApiSupplierPackageSupplierPackage
     singularName: 'supplier-package';
     pluralName: 'supplier-packages';
     displayName: 'SupplierPackage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1329,9 +1330,9 @@ export interface ApiSupplierPackageSupplierPackage
     title: Attribute.String;
     desc: Attribute.Text;
     rate: Attribute.Decimal;
-    suppliers: Attribute.Relation<
+    supplier: Attribute.Relation<
       'api::supplier-package.supplier-package',
-      'manyToMany',
+      'manyToOne',
       'api::supplier.supplier'
     >;
     createdAt: Attribute.DateTime;
@@ -1498,6 +1499,7 @@ export interface ApiWelcomeVideoWelcomeVideo extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     youtube_video_url: Attribute.String & Attribute.Required;
+    user_type: Attribute.Enumeration<['User', 'Supplier']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
