@@ -73,7 +73,7 @@ module.exports = createCoreController('api::post.post', ({ strapi }) => ({
       where: {
         $or: orQuery,
       },
-      populate: 'deep',
+      populate: true
       // populate: {
       //   user: { select: ['id'], populate: { user_image: ['url'] } },
       //   tags: { select: ['id'], populate: { user_image: ['url'] } },
