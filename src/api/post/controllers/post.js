@@ -69,20 +69,33 @@ module.exports = createCoreController('api::post.post', ({ strapi }) => ({
      * 4. supplier's hired people created
      */
     const posts = await strapi.db.query('api::post.post').findMany({
-      sort: [{ updatedAt: 'desc' }],
+      // sort: [{ id: 'desc' }],
       where: {
         $or: orQuery,
       },
-      populate: 'deep',
+      populate: {
+        user: {
+          populate: ['user_image'],
+        },
+        tags: {
+          populate: ['user_image'],
+        },
+      },
       // populate: {
-      //   user: { select: ['id'], populate: { user_image: ['url'] } },
-      //   tags: { select: ['id'], populate: { user_image: ['url'] } },
+      //   user: {
+      //     select: ['id', 'name'],
+      //     populate: { user_image: { select: ['url'] } },
+      //   },
+      //   tags: {
+      //     select: ['id', 'name'],
+      //     populate: { user_image: { select: ['url'] } },
+      //   },
       // },
     });
 
     sendAck({
       ctx,
-      data: posts,
+      data: posts?.reverse(),
     });
   },
 }));
