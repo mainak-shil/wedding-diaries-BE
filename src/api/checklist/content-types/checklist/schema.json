@@ -21,7 +21,7 @@
       "required": false
     },
     "months_before": {
-      "type": "integer"
+      "type": "decimal"
     },
     "users": {
       "type": "relation",

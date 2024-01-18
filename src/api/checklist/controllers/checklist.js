@@ -2,8 +2,8 @@
 
 const { createCoreController } = require('@strapi/strapi').factories;
 const _ = require('lodash');
-const { subtractMonths, sendAck } = require('../../../utils/helper');
-var { format } = require('date-fns');
+const { sendAck, splitToMonthAndWeek } = require('../../../utils/helper');
+var { format, sub } = require('date-fns');
 
 module.exports = createCoreController(
   'api::checklist.checklist',
@@ -36,8 +36,12 @@ module.exports = createCoreController(
 
       let checkListObj = {};
       entries.map(entity => {
+        const monthWeek = splitToMonthAndWeek(entity.months_before);
         const checklistDate = format(
-          subtractMonths(new Date(weddingUser.date), entity.months_before),
+          sub(new Date(weddingUser?.date), {
+            months: monthWeek.month,
+            weeks: monthWeek.week,
+          }),
           'MMM d, yyyy'
         );
 

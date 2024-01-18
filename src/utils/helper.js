@@ -90,8 +90,9 @@ async function sendMailUsingSendGrid(msg) {
     });
 }
 
-function subtractMonths(date, months) {
-  return date.setMonth(date.getMonth() - months);
+function splitToMonthAndWeek(number) {
+  number = String(number)?.split('.');
+  return { month: number[0], week: number[1] || 0 };
 }
 
 module.exports = {
@@ -101,6 +102,6 @@ module.exports = {
   sendAck,
   csvParserAddUser,
   sendMailUsingSendGrid,
-  subtractMonths,
   isUserInRange,
+  splitToMonthAndWeek,
 };

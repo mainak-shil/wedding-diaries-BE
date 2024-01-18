@@ -123,3 +123,7 @@ docs
 .env*
 .vscode
 yarn.lock
+
+
+
+doc.txt
