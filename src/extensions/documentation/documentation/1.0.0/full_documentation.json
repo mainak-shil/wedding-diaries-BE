@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-12-24T20:56:34.155Z"
+    "x-generation-date": "2024-01-18T20:29:59.493Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1094,7 +1094,8 @@
                                                                 "type": "string"
                                                               },
                                                               "months_before": {
-                                                                "type": "integer"
+                                                                "type": "number",
+                                                                "format": "float"
                                                               },
                                                               "users": {
                                                                 "type": "object",
@@ -4347,7 +4348,8 @@
                                                     "type": "string"
                                                   },
                                                   "months_before": {
-                                                    "type": "integer"
+                                                    "type": "number",
+                                                    "format": "float"
                                                   },
                                                   "users": {
                                                     "type": "object",
@@ -7439,7 +7441,8 @@
                                         "type": "string"
                                       },
                                       "months_before": {
-                                        "type": "integer"
+                                        "type": "number",
+                                        "format": "float"
                                       },
                                       "users": {
                                         "type": "object",
@@ -9595,7 +9598,8 @@
                 "type": "string"
               },
               "months_before": {
-                "type": "integer"
+                "type": "number",
+                "format": "float"
               },
               "users": {
                 "type": "array",
@@ -9674,7 +9678,8 @@
             "type": "string"
           },
           "months_before": {
-            "type": "integer"
+            "type": "number",
+            "format": "float"
           },
           "users": {
             "type": "object",
@@ -10535,7 +10540,8 @@
                                         "type": "string"
                                       },
                                       "months_before": {
-                                        "type": "integer"
+                                        "type": "number",
+                                        "format": "float"
                                       },
                                       "users": {
                                         "type": "object",
@@ -13775,7 +13781,8 @@
                                                     "type": "string"
                                                   },
                                                   "months_before": {
-                                                    "type": "integer"
+                                                    "type": "number",
+                                                    "format": "float"
                                                   },
                                                   "users": {
                                                     "type": "object",
@@ -16852,7 +16859,8 @@
                                         "type": "string"
                                       },
                                       "months_before": {
-                                        "type": "integer"
+                                        "type": "number",
+                                        "format": "float"
                                       },
                                       "users": {
                                         "type": "object",
@@ -20374,7 +20382,8 @@
                                       "type": "string"
                                     },
                                     "months_before": {
-                                      "type": "integer"
+                                      "type": "number",
+                                      "format": "float"
                                     },
                                     "users": {
                                       "type": "object",
@@ -23451,7 +23460,8 @@
                                         "type": "string"
                                       },
                                       "months_before": {
-                                        "type": "integer"
+                                        "type": "number",
+                                        "format": "float"
                                       },
                                       "users": {
                                         "type": "object",
@@ -26577,7 +26587,8 @@
                                       "type": "string"
                                     },
                                     "months_before": {
-                                      "type": "integer"
+                                      "type": "number",
+                                      "format": "float"
                                     },
                                     "users": {
                                       "type": "object",
@@ -29839,7 +29850,8 @@
                                       "type": "string"
                                     },
                                     "months_before": {
-                                      "type": "integer"
+                                      "type": "number",
+                                      "format": "float"
                                     },
                                     "users": {
                                       "type": "object",
@@ -33014,7 +33026,8 @@
                                                                   "type": "string"
                                                                 },
                                                                 "months_before": {
-                                                                  "type": "integer"
+                                                                  "type": "number",
+                                                                  "format": "float"
                                                                 },
                                                                 "users": {
                                                                   "type": "object",
@@ -36159,7 +36172,8 @@
                                                     "type": "string"
                                                   },
                                                   "months_before": {
-                                                    "type": "integer"
+                                                    "type": "number",
+                                                    "format": "float"
                                                   },
                                                   "users": {
                                                     "type": "object",
@@ -39178,7 +39192,8 @@
                                       "type": "string"
                                     },
                                     "months_before": {
-                                      "type": "integer"
+                                      "type": "number",
+                                      "format": "float"
                                     },
                                     "users": {
                                       "type": "object",
@@ -42353,7 +42368,8 @@
                                                   "type": "string"
                                                 },
                                                 "months_before": {
-                                                  "type": "integer"
+                                                  "type": "number",
+                                                  "format": "float"
                                                 },
                                                 "users": {
                                                   "type": "object",
@@ -45456,7 +45472,8 @@
                                                   "type": "string"
                                                 },
                                                 "months_before": {
-                                                  "type": "integer"
+                                                  "type": "number",
+                                                  "format": "float"
                                                 },
                                                 "users": {
                                                   "type": "object",
@@ -48683,7 +48700,8 @@
                                                     "type": "string"
                                                   },
                                                   "months_before": {
-                                                    "type": "integer"
+                                                    "type": "number",
+                                                    "format": "float"
                                                   },
                                                   "users": {
                                                     "type": "object",
@@ -52875,7 +52893,8 @@
                                         "type": "string"
                                       },
                                       "months_before": {
-                                        "type": "integer"
+                                        "type": "number",
+                                        "format": "float"
                                       },
                                       "users": {
                                         "type": "object",

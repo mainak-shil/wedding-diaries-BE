@@ -874,7 +874,7 @@ export interface ApiChecklistChecklist extends Schema.CollectionType {
   attributes: {
     title: Attribute.String & Attribute.Required;
     description: Attribute.Text;
-    months_before: Attribute.Integer;
+    months_before: Attribute.Decimal;
     users: Attribute.Relation<
       'api::checklist.checklist',
       'manyToMany',
