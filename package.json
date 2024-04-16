@@ -11,7 +11,6 @@
     "start:local": "NODE_ENV=LOCAL && strapi develop",
     "start:dev": "NODE_ENV=DEV && strapi develop"
   },
-  "devDependencies": {},
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
     "@strapi/plugin-documentation": "4.14.6",
@@ -22,7 +21,8 @@
     "csv-parser": "^3.0.0",
     "dotenv": "^16.3.1",
     "pg": "^8.11.0",
-    "strapi-plugin-populate-deep": "^3.0.0"
+    "strapi-plugin-populate-deep": "^3.0.0",
+    "strapi-stripe": "^3.4.1"
   },
   "author": {
     "name": "Mainak Shil"

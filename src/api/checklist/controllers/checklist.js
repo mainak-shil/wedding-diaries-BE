@@ -66,5 +66,13 @@ module.exports = createCoreController(
 
       sendAck({ ctx, data: checkListObj });
     },
+    async stripeWebhook(ctx) {
+      console.log('entered');
+      const event = ctx.request.body;
+      console.log('event', event?.type);
+      console.log('event', event?.data?.object);
+
+      sendAck({ ctx, message: 'success' });
+    },
   })
 );
